@@ -5,13 +5,12 @@ import temsi.gafnote.presenters.base.MvpPresenter
 import temsi.gafnote.presenters.base.MvpView
 
 interface ContractEditFrag {
-    interface View : MvpView{}
+    interface View : MvpView{
+        fun showNote(title:String,content:String)
+    }
     interface Presenter : MvpPresenter<View>{
-        fun insert(note: Note)
-
         fun update(note: Note)
-
         fun delete(note: Note)
-        fun saveNewNote()
+        fun prepareNote(note: Note)
     }
 }

@@ -17,9 +17,9 @@ interface NoteDao {
     fun delete(note: Note): Completable
 
     @Query("DELETE FROM note_table")
-    fun deleteAllQuotes()
+    fun deleteAllNotes()
 
     @Query("SELECT * FROM note_table ORDER BY id desc")
-    fun getAllQuotes(): Observable<List<Note>>
+    fun getAllNotes(): Observable<List<Note>>
 
 }

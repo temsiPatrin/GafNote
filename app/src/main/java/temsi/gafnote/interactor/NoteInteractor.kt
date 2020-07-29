@@ -21,11 +21,11 @@ class NoteInteractor(private val iNoteRepo: INoteRepo):INoteInteractor {
         iNoteRepo.delete(note)
     }
 
-    override fun deleteAllQuotes() {
-        iNoteRepo.deleteAllQuotes()
+    override fun deleteAllNotes() {
+        iNoteRepo.deleteAllNotes()
     }
 
-    override fun getAllQuotes(): Observable<List<Note>> {
-        return iNoteRepo.getAllQuotes()
+    override fun getAllNotes(): Observable<List<Note>> {
+        return iNoteRepo.getAllNotes()
     }
 }

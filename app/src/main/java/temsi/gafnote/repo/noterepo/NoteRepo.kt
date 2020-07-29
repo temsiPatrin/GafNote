@@ -22,7 +22,7 @@ class NoteRepo(private val noteDao: NoteDao) : INoteRepo {
 
     @SuppressLint("CheckResult")
     override fun update(note: Note) {
-        noteDao.insert(note).subscribeOn(Schedulers.io())
+        noteDao.update(note).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { Log.d("RxJava","Update Success")},
@@ -32,7 +32,7 @@ class NoteRepo(private val noteDao: NoteDao) : INoteRepo {
 
     @SuppressLint("CheckResult")
     override fun delete(note: Note) {
-        noteDao.insert(note).subscribeOn(Schedulers.io())
+        noteDao.delete(note).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { Log.d("RxJava","Delete Success")},
@@ -41,8 +41,8 @@ class NoteRepo(private val noteDao: NoteDao) : INoteRepo {
     }
 
     @SuppressLint("CheckResult")
-    override fun deleteAllQuotes() {
-        Completable.fromAction{noteDao.deleteAllQuotes()}
+    override fun deleteAllNotes() {
+        Completable.fromAction{noteDao.deleteAllNotes()}
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -51,5 +51,5 @@ class NoteRepo(private val noteDao: NoteDao) : INoteRepo {
             )
     }
 
-    override fun getAllQuotes(): Observable<List<Note>> = noteDao.getAllQuotes()
+    override fun getAllNotes(): Observable<List<Note>> = noteDao.getAllNotes()
 }

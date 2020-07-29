@@ -23,24 +23,22 @@ class NotesRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = notes[position]
-        holder.titleView.text = item.title
-        holder.contentView.text = item.content
+        holder.bind(item)
     }
 
     override fun getItemCount(): Int = notes.size
 
-    inner class ViewHolder : RecyclerView.ViewHolder {
-        constructor(view: View) : super(view) {
-            this.titleView = view.findViewById(R.id.titleText)
-            this.contentView = view.findViewById(R.id.contentText)
-            view.setOnClickListener{
-                onItemClickListener.onItemClick(notes[adapterPosition])
-            }
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private val titleView: TextView = view.findViewById(R.id.titleText)
+        private val contentView: TextView = view.findViewById(R.id.contentText)
+        init {
+            view.setOnClickListener { onItemClickListener.onItemClick(notes[adapterPosition]) }
         }
 
-        val titleView: TextView
-        val contentView: TextView
-
+        fun bind(note: Note) {
+            titleView.text = note.title
+            contentView.text = note.content
+        }
 
     }
 }

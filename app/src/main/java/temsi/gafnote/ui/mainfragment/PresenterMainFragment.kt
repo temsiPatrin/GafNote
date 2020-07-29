@@ -29,7 +29,7 @@ class PresenterMainFragment(
 
     @SuppressLint("CheckResult")
     override fun loadNote() {
-        noteInteractor.getAllQuotes()
+        noteInteractor.getAllNotes()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(

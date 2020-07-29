@@ -12,7 +12,7 @@ interface INoteInteractor {
 
     fun delete(note: Note)
 
-    fun deleteAllQuotes()
+    fun deleteAllNotes()
 
-    fun getAllQuotes(): Observable<List<Note>>
+    fun getAllNotes(): Observable<List<Note>>
 }
